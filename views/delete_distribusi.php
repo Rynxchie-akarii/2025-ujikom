@@ -1,29 +1,28 @@
 <?php
-include_once '../controllers/crud_distribusi.php';  // Include the DistribusiController
-include_once '../config/koneksi.php';  // Include database connection
+include_once '../controllers/crud_distribusi.php';  
+include_once '../config/koneksi.php';
 
-// Create an instance of Koneksi to get the database connection
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 $koneksi = new Koneksi();
 $conn = $koneksi->getConnection();
 
-// Create an instance of DistribusiController
-$distribusiController = new DistribusiController();  // Move this outside the condition to avoid undefined variable
+$distribusiController = new DistribusiController();
 
-// Check if the ID is provided in the URL
 if (isset($_GET['id_distribusi'])) {
-    $id = $_GET['id_distribusi'];  // Get the ID from the URL
-    $distribusi = $distribusiController->readOne($id);  // Fetch the distribusi record by ID
+    $id = $_GET['id_distribusi'];
+    $distribusi = $distribusiController->readOne($id);
 } else {
-    // If no ID is provided, handle the case here (e.g., redirect, show error, etc.)
     echo "No ID provided!";
     exit;
 }
 
-// Check if the delete form has been submitted
 if (isset($_POST['confirm_delete'])) {
-    // Call the deleteAndRestore method from DistribusiController
-    $distribusiController->deleteAndRestore($id, $conn);  // Pass the ID and DB connection
-    header("Location: ../Views/distribusi.php");  // Redirect to the list of distribusi records after deletion
+    $distribusiController->deleteAndRestore($id, $conn);  
+    header("Location: ../views/distribusi.php");
     exit;
 }
 ?>
@@ -36,7 +35,6 @@ if (isset($_POST['confirm_delete'])) {
     <link rel="stylesheet" href="../views/style/delete.css">
     <title>Confirm Deletion</title>
     <style>
-        /* Basic styling for confirmation container */
         .confirmation-container {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -45,12 +43,11 @@ if (isset($_POST['confirm_delete'])) {
             width: 400px;
             margin: 50px auto;
             text-align: center;
-            opacity: 0; /* Start hidden */
-            transform: translateY(-30px); /* Start slightly above */
-            animation: slideIn 0.8s ease-out forwards; /* Apply animation */
+            opacity: 0; 
+            transform: translateY(-30px); 
+            animation: slideIn 0.8s ease-out forwards;
         }
 
-        /* Animation for sliding in and fading in */
         @keyframes slideIn {
             0% {
                 opacity: 0;
@@ -62,7 +59,6 @@ if (isset($_POST['confirm_delete'])) {
             }
         }
 
-        /* Styling for the title */
         h2 {
             font-size: 22px;
             color: #333;
@@ -84,7 +80,6 @@ if (isset($_POST['confirm_delete'])) {
             color: #333;
         }
 
-        /* Button styling */
         button {
             padding: 10px 20px;
             margin-top: 20px;
@@ -124,7 +119,7 @@ if (isset($_POST['confirm_delete'])) {
         </div>
 
         <form method="POST" action="">
-            <button type="button" onclick="window.location.href='../Views/distribusi.php';">Batal</button>
+            <button type="button" onclick="window.location.href='../views/distribusi.php';">Batal</button>
             <button type="submit" name="confirm_delete">Ya, hapus</button>
         </form>
     </div>

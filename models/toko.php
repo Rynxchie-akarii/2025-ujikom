@@ -1,5 +1,5 @@
 <?php
-include_once '../config/koneksi.php';
+include_once __DIR__ . '/../config/koneksi.php';
 
 class Toko {
     private $conn;
@@ -10,7 +10,7 @@ class Toko {
     }
 
     public function getAllToko() {
-        $sql = "SELECT * FROM tb_toko"; // Mengubah nama tabel menjadi tb_toko
+        $sql = "SELECT * FROM tb_toko";
 
         $result = $this->conn->query($sql);
         

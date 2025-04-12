@@ -29,7 +29,7 @@ $data = $result->fetch_assoc();
 
             <p><strong>Nama HP:</strong> <?= $data['nama_hp'] ?></p>
             <p><strong>Stok</strong> <?= $data['stok'] ?></p>
-            <p><strong>Total Harga:</strong> Rp <?= number_format($data['harga'], 0, ',', '.') ?></p>
+            <p><strong>Sub total:</strong> Rp <?= number_format($data['harga'], 0, ',', '.') ?></p>
             <p><strong>Toko hp</strong> <?= $data['nama_toko'] ?></p>
             <p><strong>Tanggal Kirim:</strong> <?= $data['tanggal_kirim'] ?></p>
 

@@ -1,6 +1,5 @@
 <?php
-include_once '../Config/Koneksi.php';
-
+include_once __DIR__ . '/../config/koneksi.php';
 class Supplier {
     private $conn;
 

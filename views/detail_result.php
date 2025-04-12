@@ -1,11 +1,10 @@
 <?php
-include_once '../models/detail.php'; // pastikan file ini memuat class ModelDetail
+include_once '../models/detail.php'; 
 include_once 'navbar.php';
 
 $model = new ModelDetail();
 $conn = (new Koneksi())->getConnection();
 
-// Ambil semua data distribusi yang sudah punya keterangan (detail)
 $query = "SELECT d.id_distribusi, d.nama_hp, d.stok, d.harga, d.tanggal_kirim, 
                  t.nama_toko, dd.keterangan 
           FROM tb_distribusi d
@@ -36,9 +35,10 @@ while ($row = $result->fetch_assoc()) {
         <thead>
             <tr>
                 <th>No</th>
+                <th>id distribusi</th>
                 <th>Nama HP</th>
                 <th>Stok</th>
-                <th>Total Harga</th>
+                <th>Sub total</th>
                 <th>Toko</th>
                 <th>Tanggal Kirim</th>
                 <th>Status Distribusi</th>
@@ -50,6 +50,7 @@ while ($row = $result->fetch_assoc()) {
                 <?php foreach ($details as $item): ?>
                     <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= htmlspecialchars($item['id_distribusi']) ?></td>
                         <td><?= htmlspecialchars($item['nama_hp']) ?></td>
                         <td><?= $item['stok'] ?></td>
                         <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>

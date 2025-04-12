@@ -1,12 +1,11 @@
 <?php
-session_start(); // Start session to manage messages
+session_start(); 
 
-include_once '../controllers/crud_distribusi.php'; // Ensure the path to your controller is correct
+include_once '../controllers/crud_distribusi.php'; 
 include_once "navbar.php";
 
 $DistribusiController = new DistribusiController();
 
-// Fetch data from the controller (it should return data of HP distribution)
 $distribusi = $DistribusiController->read();
 ?>
 
@@ -19,7 +18,7 @@ $distribusi = $DistribusiController->read();
     <h1 style="text-align: center;">Data distribusi HP</h1>
 
     <link rel="stylesheet" href="../views/style/table.css">
-    <a href="add_distribusi.php" class="btn-add">Tambah Data</a>
+<a href="add_distribusi.php" class="btn-add">Tambah Data</a>
     <link rel="stylesheet" href="../views/style/add_tombol.css">
 
     <style>
@@ -29,11 +28,11 @@ $distribusi = $DistribusiController->read();
         padding: 15px 20px;
         margin: 0;
         position: fixed;
-        top: 10%; /* Adjust the percentage to control the vertical position */
-        left: 50%; /* Center horizontally */
-        transform: translate(-50%, -50%); /* Offset both horizontally and vertically */
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
         width: auto;
-        max-width: 90%; /* Ensure the box doesn't overflow */
+        max-width: 90%; 
         text-align: center;
         font-size: 18px;
         z-index: 1000;
@@ -45,16 +44,16 @@ $distribusi = $DistribusiController->read();
     }
 
     .success-message-edit {
-        background-color: #2980b9; /* Blue background for Edit Success */
+        background-color: #2980b9;
         color: white;
         padding: 15px 20px;
         margin: 0;
         position: fixed;
-        top: 10%; /* Adjust the percentage to control the vertical position */
-        left: 50%; /* Center horizontally */
-        transform: translate(-50%, -50%); /* Offset both horizontally and vertically */
+        top: 10%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: auto;
-        max-width: 90%; /* Ensure the box doesn't overflow */
+        max-width: 90%;
         text-align: center;
         font-size: 18px;
         z-index: 1000;
@@ -105,12 +104,10 @@ $distribusi = $DistribusiController->read();
 </head>
 <body>
 
-<!-- Success Message for Add -->
 <div id="successMessage" class="success-message">
     Data distribusi berhasil diproses!
 </div>
 
-<!-- Success Message for Edit -->
 <div id="successMessageEdit" class="success-message-edit">
     Data distribusi berhasil diperbarui!
 </div>
@@ -122,10 +119,8 @@ $distribusi = $DistribusiController->read();
                 <th>No.</th>
                 <th>Nama HP</th>
                 <th>Stok</th>
-                <th>Harga</th>
+                <th> Total Harga</th>
                 <th>Nama Toko</th>
-                <th>Alamat</th>
-                <th>No Telepon</th>
                 <th>Tanggal Kirim</th>
                 <th>Aksi</th>
             </tr>
@@ -133,7 +128,7 @@ $distribusi = $DistribusiController->read();
         <tbody>
         <?php
         $no = 1;
-        while ($row = $distribusi->fetch_assoc()) :  // Fetch data from the controller
+        while ($row = $distribusi->fetch_assoc()) :
         ?>
             <tr>
                 <td><?= $no++; ?></td>
@@ -141,8 +136,6 @@ $distribusi = $DistribusiController->read();
                 <td><?= htmlspecialchars($row['stok']); ?></td>
                 <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
                 <td><?= htmlspecialchars($row['nama_toko']); ?></td>
-                <td><?= htmlspecialchars($row['alamat']); ?></td>
-                <td><?= '08' . htmlspecialchars($row['no_telepon']); ?></td>
                 <td><?= htmlspecialchars($row['tanggal_kirim']); ?></td>
                 <td>
                     <a href="detail.php?id_distribusi=<?= $row['id_distribusi'] ?>" style="color: #3498db; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#2980b9';" onmouseout="this.style.color='#3498db';">Konfirmasi </a>|
@@ -155,23 +148,19 @@ $distribusi = $DistribusiController->read();
 </div>
 
 <script>
-    // Check if the session variable 'success_message' is set for add operation
     <?php if (isset($_SESSION['success_message'])): ?>
-        // Display success message for add
         document.getElementById("successMessage").style.display = "block";
         setTimeout(function() {
             document.getElementById("successMessage").style.display = "none";
-        }, 2000); // Hide after 2 seconds
+        }, 2000);
         <?php unset($_SESSION['success_message']); ?>
     <?php endif; ?>
 
-    // Check if the session variable 'success_message_edit' is set for edit operation
     <?php if (isset($_SESSION['success_message_edit'])): ?>
-        // Display success message for edit
         document.getElementById("successMessageEdit").style.display = "block";
         setTimeout(function() {
             document.getElementById("successMessageEdit").style.display = "none";
-        }, 2000); // Hide after 2 seconds
+        }, 2000);
         <?php unset($_SESSION['success_message_edit']); ?>
     <?php endif; ?>
 </script>

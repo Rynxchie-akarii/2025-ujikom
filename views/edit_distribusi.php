@@ -2,8 +2,7 @@
 include_once '../controllers/crud_distribusi.php';
 include_once "../config/koneksi.php";  
 
-// Initialize the DistribusiController and Koneksi
-$distribusiController = new DistribusiController(); // Perbaiki nama objek menjadi sesuai dengan inisialisasi
+$distribusiController = new DistribusiController(); 
 $koneksi = new Koneksi();
 $conn = $koneksi->getConnection();
 

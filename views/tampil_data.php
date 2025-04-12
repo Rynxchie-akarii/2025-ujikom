@@ -1,5 +1,8 @@
 <?php
 session_start(); // Start session to manage messages
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 include_once "../models/HpModel.php"; // Memasukkan HpModel
 include_once "navbar.php"; // Memasukkan navbar terpisah
@@ -15,7 +18,7 @@ $dataHp = $hpModel->read(); // Mengambil semua data HP menggunakan metode read()
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Gudang HP</title>
     <h1 style="text-align: center;">Data Gudang HP</h1>
-    <a href="V_add.php" class="btn-add">Tambah Data</a>
+    <a href="v_add.php" class="btn-add">Tambah Data</a>
     <link rel="stylesheet" href="../views/style/add_tombol.css"> 
     <link rel="stylesheet" href="../views/style/table.css"> <!-- Style untuk tabel -->
 
@@ -124,8 +127,6 @@ $dataHp = $hpModel->read(); // Mengambil semua data HP menggunakan metode read()
                 <th>Stok</th>
                 <th>Harga 1 unit hp</th>
                 <th>Nama Supplier</th>
-                <th>Alamat</th>
-                <th>No Telpon</th>
                 <th>Tanggal Masuk</th>
                 <th>Aksi</th>
             </tr>
@@ -141,17 +142,6 @@ $dataHp = $hpModel->read(); // Mengambil semua data HP menggunakan metode read()
                 <td><?= htmlspecialchars($row['stok']); ?></td>
                 <td>Rp <?= number_format($row['harga'], 0, ',', '.'); ?></td>
                 <td><?= htmlspecialchars($row['nama_supplier']); ?></td>
-                <td><?= htmlspecialchars($row['alamat']); ?></td>
-                <td>
-                    <?php
-                        // Menambahkan awalan '08' jika belum ada
-                        $no_telepon = $row['no_telepon'];
-                        if (substr($no_telepon, 0, 2) !== "08") {
-                            $no_telepon = "08" . $no_telepon;
-                        }
-                        echo htmlspecialchars($no_telepon);
-                    ?>
-                </td>
                 <td><?= htmlspecialchars($row['tanggal_masuk']); ?></td>
                 <td>
                    <a href="v_edit.php?id=<?= $row['id']; ?>" style="color: #3498db; font-weight: bold; text-decoration: none;" onmouseover="this.style.color='#2980b9';" onmouseout="this.style.color='#3498db';">Edit</a> |

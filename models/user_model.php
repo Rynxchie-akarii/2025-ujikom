@@ -1,28 +1,42 @@
 <?php
-// Login.php
-include_once "../Config/Koneksi.php";  // Include Koneksi.php file here
+require_once __DIR__ . '/../config/koneksi.php';
 
-// Login class that extends Koneksi
-class Login extends Koneksi
-{
-    // Method to log the user in
-    public function login($username, $password)
-    {
+class Login extends koneksi{
+    private $db;
+
+    public function __construct() {
+        $this->db = new koneksi(); 
+    }
+
+    public function login($username, $password) {
+        $conn = $this->db->getConnection();  
+
+        if (!$conn) {
+            die("Koneksi gagal");
+        }
+
         $query = "SELECT * FROM login_user WHERE username = '$username' AND password = '$password'";
-        $result = parent::Query_Tampil($query);  // Calling inherited Query_Tampil method
+        $result = $conn->query($query);
 
-        if ($result) {
-            return true;
+        if ($result->num_rows > 0) {
+            return true;  
         } else {
-            return false;
+            return false;  
         }
     }
 
-    // Method to add a new account
-    public function tambah_akun($username, $password)
-    {
-        $query = "INSERT INTO login_user (username, password) VALUES ('$username', '$password')";
-        return parent::Query_Perintah($query);  // Calling inherited Query_Perintah method
+    public function tambah_akun($username, $password) {
+        $query_check = "SELECT * FROM tb_user WHERE username = '$username'";
+        $result = $this->Query_Tampil($query_check);
+    
+        if ($result) {
+            return false;
+        } else {
+            $query = "INSERT INTO tb_user (username, password) VALUES ('$username', '$password')";
+            $eksekusi = $this->Query_Perintah($query);
+            return $eksekusi;
+        }
     }
+    
 }
 ?>

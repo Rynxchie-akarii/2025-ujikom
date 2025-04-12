@@ -1,7 +1,7 @@
 <?php
-session_start(); // Start session to manage messages
+session_start();
 
-include_once "../Config/Koneksi.php";  
+include_once "../config/koneksi.php";  
 
 $koneksi = new Koneksi();
 $conn = $koneksi->getConnection();
@@ -20,7 +20,6 @@ $conn = $koneksi->getConnection();
 <div class="container">
     <h2>Tambah Distribusi HP</h2>
 
-    <!-- Display Success or Error Messages -->
     <?php if (isset($_SESSION['success_message'])): ?>
         <div class="success-message">
             <?= $_SESSION['success_message']; ?>
@@ -48,7 +47,6 @@ $conn = $koneksi->getConnection();
                             $koneksi = new Koneksi(); 
                             $conn = $koneksi->getConnection();
 
-                            // Fetch mobile phones (hpsamsung table)
                             $sql = "SELECT * FROM hpsamsung";  
                             $result = $conn->query($sql);
 
@@ -77,7 +75,6 @@ $conn = $koneksi->getConnection();
                             $koneksi = new Koneksi(); 
                             $conn = $koneksi->getConnection();
 
-                            // Fetch toko data (tb_toko table)
                             $sql = "SELECT * FROM tb_toko";
                             $result = $conn->query($sql);
 

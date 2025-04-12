@@ -1,5 +1,5 @@
 <?php
-include_once '../config/Koneksi.php';
+include_once __DIR__ . '/../config/koneksi.php';
 
 class HpModel {
     private $conn;
@@ -9,7 +9,6 @@ class HpModel {
         $this->conn = $db->getConnection();
     }
 
-    // Fungsi untuk menambahkan data HP
     public function create($nama_hp, $varian, $stok, $harga, $tanggal_masuk, $id_supplier) {
         if (empty($nama_hp) || empty($varian) || empty($stok) || empty($harga) || empty($tanggal_masuk) || empty($id_supplier)) {
             die('Semua kolom harus diisi.');
@@ -25,19 +24,16 @@ class HpModel {
         }
     }
 
-    // Fungsi untuk mengambil semua data HP
     public function read() {
         $sql = "SELECT * FROM hpsamsung, tb_supplier WHERE hpsamsung.id_supplier = tb_supplier.id_supplier";
         return $this->conn->query($sql);
     }
 
-    // Fungsi untuk mengambil data HP berdasarkan ID
     public function readOne($id) {
         $sql = "SELECT * FROM hpsamsung WHERE id = $id";
         return $this->conn->query($sql)->fetch_assoc();
     }
 
-    // Fungsi untuk mengedit data HP berdasarkan ID
     public function update($id, $nama_hp, $varian, $stok, $harga, $tanggal_masuk) {
         $sql = "UPDATE hpsamsung 
                 SET nama_hp = '$nama_hp', varian = '$varian', stok = $stok, harga = $harga, tanggal_masuk = '$tanggal_masuk' 
@@ -50,13 +46,11 @@ class HpModel {
         }
     }
 
-    // Fungsi untuk menghapus data HP berdasarkan ID
     public function delete($id) {
         $sql = "DELETE FROM hpsamsung WHERE id = $id";
         return $this->conn->query($sql);
     }
 
-    // Fungsi untuk mengambil semua data Supplier
     public function getAllSuppliers() {
         $sql = "SELECT * FROM tb_supplier";
         return $this->conn->query($sql);

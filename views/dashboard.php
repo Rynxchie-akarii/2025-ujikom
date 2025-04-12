@@ -1,14 +1,12 @@
 <?php
-SESSION_START(); // Mulai sesi untuk memeriksa sesi login
+SESSION_START();
 
-// Periksa apakah pengguna sudah login
 if (!isset($_SESSION['username'])) {
-    // Jika tidak login, arahkan ke halaman login
     header("Location: ../index.php");
     exit;
 }
 
-$username = $_SESSION['username']; // Menyimpan username dari sesi
+$username = $_SESSION['username']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">

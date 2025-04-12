@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Cek stok dan ambil harga dari tabel hpsamsung
     $sql_check = "SELECT stok, harga FROM hpsamsung WHERE nama_hp = '$nama_hp'";  
     $result = $conn->query($sql_check);
 
@@ -36,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
-        // Hitung total harga distribusi
         $total_harga = $harga_per_unit * $stok;
 
         $new_stok_hp = $stok_tersedia - $stok;  
@@ -51,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
 
-            // Kirim juga $total_harga ke fungsi create
             $DistribusiController->create($nama_hp, $stok, $total_harga, $tanggal_kirim, $id_toko);
 
             $_SESSION['success_message'] = "Data distribusi HP berhasil ditambahkan!";

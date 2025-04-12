@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Apr 2025 pada 16.44
+-- Waktu pembuatan: 12 Apr 2025 pada 15.52
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -86,7 +86,8 @@ CREATE TABLE `tb_detail_distribusi` (
 --
 
 INSERT INTO `tb_detail_distribusi` (`id_detail`, `id_distribusi`, `keterangan`) VALUES
-(2, 92, 'Diperjalanan');
+(2, 92, 'Diperjalanan'),
+(3, 93, 'Terkirim');
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ ALTER TABLE `login_user`
 -- AUTO_INCREMENT untuk tabel `tb_detail_distribusi`
 --
 ALTER TABLE `tb_detail_distribusi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_distribusi`

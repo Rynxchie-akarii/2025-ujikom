@@ -1,16 +1,15 @@
 <?php
-include_once '../controllers/crud_hp.php';  // Include the HpController
+include_once '../controllers/crud_hp.php';
 
 if (isset($_GET['id'])) {
-    $id = $_GET['id'];  // Get the ID from the URL
-    $hpController = new HpController();  // Create an instance of HpController
-    $hp = $hpController->readOne($id);  // Fetch the HP record by ID
+    $id = $_GET['id'];
+    $hpController = new HpController();  
+    $hp = $hpController->readOne($id);
 }
 
-// Check if the delete form has been submitted
 if (isset($_POST['confirm_delete'])) {
-    $hpController->delete($id);  // Call the delete method from HpController
-    header("Location: tampil_data.php");  // Redirect to the list of HP records after deletion
+    $hpController->delete($id);
+    header("Location: tampil_data.php");  
     exit;
 }
 ?>
@@ -23,7 +22,6 @@ if (isset($_POST['confirm_delete'])) {
     <title>Confirm Deletion</title>
     <link rel="stylesheet" href="../views/style/delete.css">
     <style>
-        /* Basic styling for confirmation container */
         .confirmation-container {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -32,12 +30,11 @@ if (isset($_POST['confirm_delete'])) {
             width: 400px;
             margin: 50px auto;
             text-align: center;
-            opacity: 0; /* Start hidden */
-            transform: translateY(-30px); /* Start slightly above */
-            animation: slideIn 0.8s ease-out forwards; /* Apply animation */
+            opacity: 0;
+            transform: translateY(-30px); 
+            animation: slideIn 0.8s ease-out forwards; 
         }
 
-        /* Animation for sliding in and fading in */
         @keyframes slideIn {
             0% {
                 opacity: 0;
