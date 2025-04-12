@@ -1,0 +1,296 @@
+/* Fade In and Slide Up Animation for Form */
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    max-width: 800px; /* Slightly increased container width */
+    margin: 30px auto; /* Increased top/bottom margin */
+    padding: 30px; /* Increased padding */
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(46, 139, 87, 0.1);
+    animation: slideUpFadeIn 0.8s ease-out;
+}
+
+/* Fade In and Slide Up Animation for Input Fields and Buttons */
+@keyframes inputFieldFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base Styling for the Form Container */
+:root {
+    --primary: #2e8b57;
+    --primary-light: #3cb371;
+    --primary-dark: #228b22;
+    --secondary: #006400;
+    --accent: #98fb98;
+    --light: #f5fff5;
+    --dark: #1e3f1e;
+    --gray: #8fbc8f;
+    --success: #3aaf85;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background-color: #f0fff0;
+    color: var(--dark);
+    line-height: 1.6;
+    padding: 30px 20px; /* Increased vertical padding */
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 40px; /* Increased bottom margin */
+    font-size: 2.2rem; /* Slightly larger font */
+    font-weight: 600;
+    position: relative;
+    letter-spacing: -0.5px;
+    animation: 
+        textFloat 3s ease-in-out infinite alternate,
+        colorPulse 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes textFloat {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes colorPulse {
+    0%, 100% {
+        color: var(--primary);
+        text-shadow: 0 0 0 rgba(46, 139, 87, 0);
+    }
+    50% {
+        color: var(--primary-light);
+        text-shadow: 0 0 8px rgba(46, 139, 87, 0.2);
+    }
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; /* Moved further down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Increased width */
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--primary-light));
+    border-radius: 4px;
+    animation: underlinePulse 3s ease-in-out infinite;
+}
+
+@keyframes underlinePulse {
+    0%, 100% {
+        width: 120px;
+        opacity: 0.8;
+    }
+    50% {
+        width: 150px;
+        opacity: 1;
+    }
+}
+
+/* Improved Table Styling with Better Spacing */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 25px; /* Increased row spacing */
+    margin: 0 auto 50px; /* Increased bottom margin */
+}
+
+td {
+    padding: 15px 20px; /* Increased padding */
+    vertical-align: middle;
+}
+
+td:first-child {
+    width: 25%; /* Increased width for label column */
+    font-weight: 500;
+    color: var(--dark);
+    padding-right: 25px; /* Increased right padding */
+}
+
+select, 
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 15px 20px; /* Increased padding */
+    border: 1px solid #d4edda;
+    border-radius: 10px;
+    font-size: 1.05rem; /* Slightly larger font */
+    transition: all 0.3s ease;
+    background-color: #f8fff8;
+    color: var(--dark);
+    font-family: inherit;
+    animation: inputFieldFadeIn 0.8s ease-out;
+    margin: 5px 0; /* Added margin top/bottom */
+}
+
+/* Enhanced Button Group with Better Spacing */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Increased gap between buttons */
+    margin-top: 50px; /* Increased top margin */
+    padding: 30px 0; /* Increased vertical padding */
+    animation: buttonFadeIn 0.8s ease-out;
+}
+
+button {
+    padding: 15px 32px; /* Increased padding */
+    border: none;
+    border-radius: 12px; /* Slightly more rounded */
+    font-size: 1.1rem; /* Slightly larger font */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    letter-spacing: 0.5px; /* Increased letter spacing */
+    min-width: 180px; /* Minimum width for buttons */
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 4px 14px rgba(46, 139, 87, 0.25);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 18px rgba(46, 139, 87, 0.35);
+}
+
+button[type="button"] {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+button[type="button"]:hover {
+    background: rgba(46, 139, 87, 0.05);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 20px 15px; /* Adjusted margins */
+        border-radius: 12px;
+    }
+    
+    h2 {
+        font-size: 1.8rem; /* Slightly larger than before */
+        margin-bottom: 30px;
+    }
+    
+    td {
+        display: block;
+        width: 100% !important;
+        padding: 12px 0; /* Adjusted padding */
+    }
+    
+    .button-group {
+        flex-direction: column;
+        gap: 20px; /* Increased gap */
+        margin-top: 30px;
+        padding: 20px 0; /* Adjusted padding */
+    }
+    
+    button {
+        width: 100%;
+        padding: 16px; /* Increased padding */
+    }
+}
+
+/* Enhanced Select Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e8b57' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 20px center; /* Adjusted position */
+    background-size: 18px;
+    padding-right: 45px !important; /* Increased padding */
+}
+
+/* Adding Delay to Each Input Field and Button */
+select:nth-child(1),
+input[type="text"]:nth-child(1),
+input[type="number"]:nth-child(1),
+input[type="date"]:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+select:nth-child(2),
+input[type="text"]:nth-child(2),
+input[type="number"]:nth-child(2),
+input[type="date"]:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+select:nth-child(3),
+input[type="text"]:nth-child(3),
+input[type="number"]:nth-child(3),
+input[type="date"]:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+select:nth-child(4),
+input[type="text"]:nth-child(4),
+input[type="number"]:nth-child(4),
+input[type="date"]:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Fade In Animation for Buttons */
+@keyframes buttonFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add Delay to Buttons */
+.button-group button:nth-child(1) {
+    animation-delay: 0.6s;
+}
+
+.button-group button:nth-child(2) {
+    animation-delay: 0.7s;
+}

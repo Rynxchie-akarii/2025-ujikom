@@ -1,0 +1,143 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding-top: 80px; /* Menambahkan padding untuk konten agar tidak tertutup navbar */
+}
+
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(135deg, #3498db, #9b59b6); /* Gradient background */
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Membuat bayangan lebih dramatis */
+    border-bottom: 3px solid rgba(255, 255, 255, 0.2); /* Border putih tipis di bawah navbar */
+    border-radius: 0 0 20px 20px; /* Rounded bottom corners */
+}
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Logo Styling */
+.logo {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Logo hover effect */
+.logo:hover {
+    transform: scale(1.15);
+    color: #ffeb3b; /* Warna kuning cerah pada hover */
+}
+
+/* Navbar Links */
+.navbar-links {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+/* Styling for each navbar link */
+.navbar-links li {
+    margin: 0 25px;
+}
+
+.navbar-links .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Hover effect for navbar link */
+.navbar-links .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Soft transparent background on hover */
+    color: #fff;
+    transform: translateY(-5px); /* Small movement on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+}
+
+/* Active link styling */
+.navbar-links .nav-link.active {
+    background-color: #e74c3c;
+    font-weight: bold;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Larger shadow for active link */
+}
+
+/* Toggle button for mobile */
+.navbar-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 25px;
+}
+
+.navbar-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-links .nav-link {
+        font-size: 1.3rem;
+        padding: 12px 20px;
+        border-radius: 5px;
+        background-color: #3498db; /* Blue background for mobile links */
+    }
+
+    .navbar-links .nav-link:hover {
+        background-color: #2ecc71; /* Green background on hover */
+    }
+}

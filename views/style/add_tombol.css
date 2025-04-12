@@ -1,0 +1,25 @@
+/* CSS untuk tombol .btn-add */
+.btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border-radius: 5px; /* Sudut membulat */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efek transisi */
+}
+
+/* Efek hover untuk tombol */
+.btn-add:hover {
+    background-color: #45a049; /* Warna latar belakang saat hover */
+    transform: translateY(-2px); /* Efek tombol sedikit terangkat */
+}
+
+/* Efek saat tombol ditekan */
+.btn-add:active {
+    background-color: #3e8e41; /* Warna latar belakang saat ditekan */
+    transform: translateY(1px); /* Efek tombol sedikit terdorong */
+}
